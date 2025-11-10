@@ -86,10 +86,10 @@ public:
       cfg.use_lock   = true;        // トランザクションロックを使用する場合はtrueを設定
       cfg.dma_channel = SPI_DMA_CH_AUTO; // 使用するDMAチャンネルを設定 (0=DMA不使用 / 1=1ch / 2=ch / SPI_DMA_CH_AUTO=自動設定)
       // ※ ESP-IDFバージョンアップに伴い、DMAチャンネルはSPI_DMA_CH_AUTO(自動設定)が推奨になりました。1ch,2chの指定は非推奨になります。
-      cfg.pin_sclk = 40;            // SPIのSCLKピン番号を設定
-      cfg.pin_mosi = 41;            // SPIのMOSIピン番号を設定
+      cfg.pin_sclk = 15;            // SPIのSCLKピン番号を設定
+      cfg.pin_mosi = 16;            // SPIのMOSIピン番号を設定
       cfg.pin_miso = -1;            // SPIのMISOピン番号を設定 (-1 = disable)
-      cfg.pin_dc   = 38;            // SPIのD/Cピン番号を設定  (-1 = disable)
+      cfg.pin_dc   = 13;            // SPIのD/Cピン番号を設定  (-1 = disable)
      // SDカードと共通のSPIバスを使う場合、MISOは省略せず必ず設定してください。
 //*/
 
@@ -101,8 +101,8 @@ public:
     { // 表示パネル制御の設定を行います。
       auto cfg = _panel_instance.config();    // 表示パネル設定用の構造体を取得します。
 
-      cfg.pin_cs           =    39;  // CSが接続されているピン番号   (-1 = disable)
-      cfg.pin_rst          =    47;  // RSTが接続されているピン番号  (-1 = disable)
+      cfg.pin_cs           =    14;  // CSが接続されているピン番号   (-1 = disable)
+      cfg.pin_rst          =    17;  // RSTが接続されているピン番号  (-1 = disable)
       cfg.pin_busy         =    -1;  // BUSYが接続されているピン番号 (-1 = disable)
 
       // ※ 以下の設定値はパネル毎に一般的な初期値が設定されていますので、不明な項目はコメントアウトして試してみてください。
@@ -131,7 +131,7 @@ public:
     { // バックライト制御の設定を行います。（必要なければ削除）
       auto cfg = _light_instance.config();    // バックライト設定用の構造体を取得します。
 
-      cfg.pin_bl = 45;              // バックライトが接続されているピン番号
+      cfg.pin_bl = 12;              // バックライトが接続されているピン番号
       cfg.invert = false;           // バックライトの輝度を反転させる場合 true
       cfg.freq   = 44100;           // バックライトのPWM周波数
       cfg.pwm_channel = 7;          // 使用するPWMのチャンネル番号
@@ -147,3 +147,4 @@ public:
 #endif
 
 #endif
+
